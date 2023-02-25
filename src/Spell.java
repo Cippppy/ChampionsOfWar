@@ -24,7 +24,7 @@ public class Spell extends Item implements Equipable, Removable, Readable
     /**
      * The character reads the magic words of the spell
      * @param character The character reading the spell
-     * @param item The spell to be used
+     * @param item The spell to be usedS
      */
     public void read(Character character, Item item)
     {
@@ -32,4 +32,22 @@ public class Spell extends Item implements Equipable, Removable, Readable
         read.accept(character, item);
     }
 
+    @Override
+    public void use(Character character, Item item)
+    {
+        if(character != null && item != null)
+        {
+            BiConsumer<Character, Item> use = (charName, itemName) -> 
+            {
+                charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
+                System.out.println(itemName.getItemName() + " used on " + charName.toString());
+                read(charName, itemName);
+            };
+            use.accept(character, item);
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
+        }
+    }
 }

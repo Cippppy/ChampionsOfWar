@@ -28,7 +28,26 @@ public class Letter extends Item implements Readable
      */
     public void read(Character character, Item item)
     {
-        BiConsumer<Character,Item> read = (charName, itemName) -> System.out.println("Reading Letter, '" + text + "'");
-        read.accept(character, item);
+        if(character != null && item != null)
+        {
+            BiConsumer<Character,Item> read = (charName, itemName) -> System.out.println("Reading Letter, '" + text + "'");
+            read.accept(character, item);
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
+        }
+    }
+
+    @Override
+    public void use(Character character, Item item)
+    {
+        BiConsumer<Character, Item> use = (charName, itemName) -> 
+        {
+            charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
+            System.out.println(itemName.getItemName() + " used on " + charName.toString());
+            read(charName, itemName);
+        };
+        use.accept(character, item);
     }
 }

@@ -67,10 +67,16 @@ public class Item
     {
         if(character != null && item != null)
         {
-            BiConsumer<Character, Item> use = (charName, itemName) -> charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
+            BiConsumer<Character, Item> use = (charName, itemName) -> 
+            {
+                charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
+                System.out.println(itemName.getItemName() + " used on " + charName.toString());
+            };
             use.accept(character, item);
-            System.out.println(item.getItemName() + " used on " + character.toString());
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
         }
     }
-    
 }

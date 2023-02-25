@@ -20,5 +20,8 @@ public class Driver
 
         System.out.println("\n** Godwin and Marilyn Battle");
         godwin.use(godwin, protectionSpell);
+        marilyn.use(godwin, rustyKnife);
+        godwin.use(godwin, gladiatorsShield);
+        marilyn.use(godwin, rustyKnife);
     }
 }
