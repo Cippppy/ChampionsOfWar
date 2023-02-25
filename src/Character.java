@@ -1,5 +1,5 @@
 import java.util.List;
-
+import java.util.ArrayList;
 
 public class Character 
 {
@@ -9,7 +9,7 @@ public class Character
     // The HP of the character
     private int healthPoints;
     // The items the character has
-    private List<Item> bag;
+    private List<Item> bag = new ArrayList<Item>();
 
     /**
      * Create a new character with a name and an intial HP
@@ -98,12 +98,34 @@ public class Character
     }
 
     /**
+     * Adds a single item to the character's bag
+     * @param item The item to be added to the character's bag
+     */
+    public void addToBag(Item item)
+    {
+        if(item != null)
+        {
+            bag.add(item);
+            System.out.println(item.getItemName() + " added to " + toString());
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
+        }
+    }
+
+    /**
      * Return the items in the character's bag
      * @return The items in the character's bag
      */
     public List<Item> getBag()
     {
         return bag;
+    }
+
+    public void use(Character character, Item item)
+    {
+        bag.get(bag.indexOf(item)).use(character, item);
     }
 
     @Override
