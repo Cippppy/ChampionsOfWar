@@ -66,6 +66,10 @@ public class Character
         {
             this.healthPoints = healthPoints;
         }
+        else if(healthPoints <= 0)
+        {
+            this.healthPoints = 0;
+        }
         else
         {
             System.out.println("Error: The input HP is invalid.");
@@ -82,7 +86,7 @@ public class Character
     }
 
     /**
-     * Return the character's bag
+     * Set the character's bag
      * @param bag The character's bag
      */
     public void setBag(List<Item> bag)
@@ -95,6 +99,15 @@ public class Character
         {
             System.out.println("Error: The input is invalid.");
         }
+    }
+
+    /**
+     * Return the items in the character's bag
+     * @return The items in the character's bag
+     */
+    public List<Item> getBag()
+    {
+        return bag;
     }
 
     /**
@@ -114,18 +127,16 @@ public class Character
         }
     }
 
-    /**
-     * Return the items in the character's bag
-     * @return The items in the character's bag
-     */
-    public List<Item> getBag()
-    {
-        return bag;
-    }
-
     public void use(Character character, Item item)
     {
-        bag.get(bag.indexOf(item)).use(character, item);
+        if(character != null && item != null && bag.indexOf(item) != -1)
+        {
+            bag.get(bag.indexOf(item)).use(character, item);
+        }
+        else
+        {
+            System.out.println("Error the input is invalid.");
+        }
     }
 
     @Override
@@ -133,5 +144,4 @@ public class Character
     {
         return name + " (" + healthPoints + ")";
     }
-
 }

@@ -1,11 +1,14 @@
-import java.util.function.BiConsumer;
-
 public interface Equipable
 {
     public default void equip(Character character, Item item)
     {
-        BiConsumer<Character, Item> equip = (charName, itemName) -> charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
-        equip.accept(character, item);
-        System.out.println("equipping");
+        if(character != null && item != null)
+        {
+            System.out.println("equipping");
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
+        }
     }
 }

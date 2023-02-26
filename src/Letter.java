@@ -12,26 +12,12 @@ public class Letter extends Item implements Readable
      * @param effectOnHealth The effect on the character's HP
      * @param text The text within the letter
      */
-    public Letter (String name, int effectOnHealth, String text)
+    public Letter (String name, int effectOnHealth, String otherInfo, String text)
     {
-        super(name, effectOnHealth);
+        super(name, effectOnHealth, otherInfo);
         if(text != null)
         {
             this.text = text;
-        }
-    }
-
-    /**
-     * The character reads the text within the letter
-     * @param character The character doing the reading
-     * @param item The letter to be read
-     */
-    public void read(Character character, Item item)
-    {
-        if(character != null && item != null)
-        {
-            BiConsumer<Character,Item> read = (charName, itemName) -> System.out.println("Reading Letter, '" + text + "'");
-            read.accept(character, item);
         }
         else
         {
@@ -39,15 +25,37 @@ public class Letter extends Item implements Readable
         }
     }
 
+    /**
+     * Return the text of the letter
+     * @return The text of the letter
+     */
+    public String getText()
+    {
+        return text;
+    }
+
+    /**
+     * Set the text of the letter
+     * @param text The text to be set
+     */
+    public void setText(String text)
+    {
+        this.text = text;
+    }
+
+    public void read(Character character, Item letter)
+    {
+        if(character != null && letter != null)
+        {
+            BiConsumer<Character, Item> read = (charName, letterName) -> System.out.println("Reading Letter, '" + getText() + "'");
+            read.accept(character, letter);
+        }
+    }
+
     @Override
     public void use(Character character, Item item)
     {
-        BiConsumer<Character, Item> use = (charName, itemName) -> 
-        {
-            charName.setHealthPoints(charName.getHealthPoints() + itemName.getEffectOnHealth());
-            System.out.println(itemName.getItemName() + " used on " + charName.toString());
-            read(charName, itemName);
-        };
-        use.accept(character, item);
+        super.use(character, item);
+        read(character, item);
     }
 }

@@ -1,7 +1,7 @@
 public class Weapon extends Item implements Equipable, Removable
 {
-    public Weapon (String name, int effectOnHealth)
+    public Weapon (String name, int effectOnHealth, String otherInfo)
     {
-            super(name, effectOnHealth);
+            super(name, effectOnHealth, otherInfo);
     }
 }

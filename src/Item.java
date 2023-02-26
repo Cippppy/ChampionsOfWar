@@ -6,13 +6,16 @@ public class Item
     private String itemName;
     // The effect the item has on HP
     private int effectOnHealth;
+    // Other info about the item
+    private String otherInfo;
 
-    public Item(String itemName, int effectOnHealth)
+    public Item(String itemName, int effectOnHealth, String otherInfo)
     {
-        if(itemName != null)
+        if(itemName != null && otherInfo != null)
         {
             this.itemName = itemName;
             this.effectOnHealth = effectOnHealth;
+            this.otherInfo = otherInfo;
         }
         else
         {
@@ -63,6 +66,32 @@ public class Item
         return this.effectOnHealth;
     }
 
+    /**
+     * Set the item's other info
+     * @param otherInfo The item's other info
+     */
+    public void setOtherInfo(String otherInfo)
+    {
+        if(otherInfo != null)
+        {
+            this.otherInfo = otherInfo;
+        }
+        else
+        {
+            System.out.println("Error: The input is invalid.");
+        }
+    }
+
+    public String getOtherInfo()
+    {
+        return otherInfo;
+    }
+
+    /**
+     * Use the choosen item on a specific character
+     * @param character The character the item is to be used on
+     * @param item The item that is to be used
+     */
     public void use(Character character, Item item)
     {
         if(character != null && item != null)

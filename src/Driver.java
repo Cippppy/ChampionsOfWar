@@ -2,11 +2,12 @@ public class Driver
 {
     private static Character godwin = new Character("Godwin", 30);
     private static Character marilyn = new Character("Marilyn", 40);
-    private static Item widowsCLoak = new Armor("Widow's Cloak", 15);
-    private static Item gladiatorsShield = new Armor("Gladiator's Shield", 8);
-    private static Item rustyKnife = new Weapon("Rusty Knife", -3);
-    private static Item protectionSpell = new Spell("Protection Spell", 1, "Goddess of the day and night, protect me with all your might");
-    private static Item noteFromZelda = new Letter("Note From Zelda", 0, "Beware of the Witch");
+    private static Item widowsCloak = new Armor("Widow's Cloak", 15, "");
+    private static Item gladiatorsShield = new Armor("Gladiator's Shield", 8, "");
+    private static Item rustyKnife = new Weapon("Rusty Knife", -3, "");
+    private static Item protectionSpell = new Spell("Protection Spell", 1, "has magic words that can be read", "Goddess of the day and night, protect me with all your might");
+    private static Item noteFromZelda = new Letter("Note From Zelda", 0, "says \"Beware of the Witch\"", "Beware of the Witch");
+    private static Item godSword = new Weapon("God Sword", -999999, "");
 
     public static void main(String[] args)
     {
@@ -14,7 +15,7 @@ public class Driver
         godwin.addToBag(noteFromZelda);
         marilyn.addToBag(noteFromZelda);
         godwin.addToBag(protectionSpell);
-        marilyn.addToBag(widowsCLoak);
+        marilyn.addToBag(widowsCloak);
         godwin.addToBag(gladiatorsShield);
         marilyn.addToBag(rustyKnife);
 
@@ -23,5 +24,11 @@ public class Driver
         marilyn.use(godwin, rustyKnife);
         godwin.use(godwin, gladiatorsShield);
         marilyn.use(godwin, rustyKnife);
+
+        System.out.println("\n** Test for other methods");
+        godwin.use(godwin, noteFromZelda);
+        marilyn.use(marilyn, noteFromZelda);
+        marilyn.addToBag(godSword);
+        marilyn.use(godwin, godSword);
     }
 }
