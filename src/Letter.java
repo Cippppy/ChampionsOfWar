@@ -1,5 +1,11 @@
 import java.util.function.BiConsumer;
 
+/**
+ * Letter is a sub class of item that is Readable.
+ * 
+ * @author Christian Cipolletta
+ * @version 2/26/2023
+ */
 public class Letter extends Item implements Readable
 {
     // The text inside the letter
@@ -43,6 +49,7 @@ public class Letter extends Item implements Readable
         this.text = text;
     }
 
+    @Override
     public void read(Character character, Item letter)
     {
         if(character != null && letter != null)

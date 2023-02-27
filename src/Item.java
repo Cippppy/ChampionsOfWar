@@ -1,5 +1,12 @@
 import java.util.function.BiConsumer;
 
+/**
+ * Item is a super class that has the categories, armor, spell, letter, and weapon.
+ * It is used to fill the character's bag and can be used on any character.
+ * 
+ * @author Christian Cipolletta
+ * @version 2/26/2023
+ */
 public class Item 
 {
     // The name of the item
@@ -9,6 +16,13 @@ public class Item
     // Other info about the item
     private String otherInfo;
 
+    /**
+     * Creates a new item with an intial name, effect on health, and other info.
+     * 
+     * @param itemName The name of the item
+     * @param effectOnHealth The effect the item has on HP
+     * @param otherInfo Other info about the item
+     */
     public Item(String itemName, int effectOnHealth, String otherInfo)
     {
         if(itemName != null && otherInfo != null)
@@ -82,6 +96,10 @@ public class Item
         }
     }
 
+    /**
+     * Return the item's other info
+     * @return The item's other info
+     */
     public String getOtherInfo()
     {
         return otherInfo;

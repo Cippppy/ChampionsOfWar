@@ -1,5 +1,11 @@
 import java.util.function.BiConsumer;
 
+/**
+ * Spell is a sub class of item that is Readable, Equipable, and Removable.
+ * 
+ * @author Christian Cipolletta
+ * @version 2/26/2023
+ */
 public class Spell extends Item implements Equipable, Removable, Readable
 {
     // The magic words of the spell

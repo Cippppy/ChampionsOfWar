@@ -1,6 +1,12 @@
 import java.util.List;
 import java.util.ArrayList;
 
+/**
+ * Character is the main entity of the program that has the ability to stage a battle
+ * 
+ * @author Christian Cipolletta
+ * @version 2/26/2023
+ */
 public class Character 
 {
 
@@ -127,6 +133,11 @@ public class Character
         }
     }
 
+    /**
+     * The character uses an item on itself or another character
+     * @param character The character the item is used on
+     * @param item The item to use on a character
+     */
     public void use(Character character, Item item)
     {
         if(character != null && item != null && bag.indexOf(item) != -1)
